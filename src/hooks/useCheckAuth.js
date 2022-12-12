@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { onAuthStateChanged } from "firebase/auth"
 import { FirebaseAuth } from "../firebase/config"
 import { login, logout } from "../store/auth"
+import { startLoadingNotes } from "../store/journal/thunks"
 
 export const useCheckAuth = () => {
 
@@ -22,6 +23,8 @@ export const useCheckAuth = () => {
             // si tengo un usuario hago el login
             const { uid, email, displayName, photoURL } = user;
             disptach( login({ uid, email, displayName, photoURL }) )
+            // cargar las notad del usuario de Firebase
+            disptach( startLoadingNotes() )
         } )
 
     }, [  ])
