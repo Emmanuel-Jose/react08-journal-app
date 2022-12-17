@@ -9,15 +9,17 @@ import { AuthLayout } from "../layout/AuthLayout"
 import { startGoogleSignIn, startLoginWithEmailPassword } from "../../store/auth"
 import { useForm } from "../../hooks"
 
+const formData = {
+    email: 'jose@email.com',
+    password: '1234'
+}
+
 export const LoginPage = () => {
 
     const dispatch = useDispatch();
     const { status, errorMessage } = useSelector( state => state.auth );
 
-    const { email, password, onInputChange } = useForm({
-        email: 'jose@email.com',
-        password: '1234'
-    });
+    const { email, password, onInputChange } = useForm( formData );
 
     // memorizar si el usuario esta authenticado
     // si status === 'checking' regresa True, y la dependencia va a ser el estatus

@@ -11,6 +11,13 @@ export const useForm = ( initialForm = {}, formValidations = {} ) => {
         
     }, [ formState ])
 
+    useEffect(() => {
+      
+        setFormState( initialForm );
+    
+    }, [ initialForm ])
+    
+
     const isFormValid = useMemo( () => {
 
         // ver si todas las propiedades tienen valur de null
